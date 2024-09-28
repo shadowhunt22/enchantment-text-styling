@@ -1,0 +1,49 @@
+{
+	"schemaVersion": 1,
+	"id": "colored-enchantments",
+	"version": "${version}",
+	"name": "Colored Enchantments",
+	"description": "Add colors to enchantment names!",
+	"authors": [
+		"ShadowHunter22"
+	],
+	"contact": {
+		"homepage": "https://shadowhunt22.github.io/mod-wiki/",
+		"sources": "https://github.com/shadowhunt22/colored-enchantments"
+	},
+	"license": "ARR",
+	"icon": "assets/colored-enchantments/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"com.shadowhunter22.coloredenchantments.ColoredEnchantments"
+		],
+		"client": [
+			"com.shadowhunter22.coloredenchantments.ColoredEnchantmentsClient"
+		]
+	},
+	"mixins": [
+		"colored-enchantments.mixins.json",
+		{
+			"config": "colored-enchantments.client.mixins.json",
+			"environment": "client"
+		}
+	],
+	"depends": {
+		"fabricloader": ">=0.16.5",
+		"minecraft": "~1.21",
+		"java": ">=21",
+		"fabric-api": "*"
+	},
+	"suggests": {
+		"another-mod": "*"
+	},
+	"custom": {
+		"modmenu": {
+			"badges": [
+				"library"
+			],
+			"update_checker": false
+		}
+	}
+}
