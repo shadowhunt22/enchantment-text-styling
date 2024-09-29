@@ -21,28 +21,25 @@ import java.util.TreeMap;
 import java.util.concurrent.CompletableFuture;
 import java.util.function.BiConsumer;
 
-public abstract class EnchantmentTextProvider extends FabricCodecDataProvider<EnchantmentStyling> {
-    // TODO implement DataProvider instead of extending FabricCodecDataProvider<> for greater flexibility
-    //  in writing to different directories based off of the enchantment namespace
+public abstract class EnchantmentTextColorProvider extends FabricCodecDataProvider<EnchantmentStyling> {
+    private static final Logger LOGGER = LoggerFactory.getLogger(EnchantmentTextColor.MOD_ID + "/EnchantmentTextColorProvider");
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(EnchantmentTextColor.MOD_ID + "/EnchantmentTextProvider");
-
-    protected EnchantmentTextProvider(FabricDataOutput dataOutput, CompletableFuture<RegistryWrapper.WrapperLookup> registriesFuture) {
+    protected EnchantmentTextColorProvider(FabricDataOutput dataOutput, CompletableFuture<RegistryWrapper.WrapperLookup> registriesFuture) {
         super(dataOutput, registriesFuture, ModRegistryKeys.STYLING, EnchantmentStyling.CODEC);
     }
 
     @Override
     protected void configure(BiConsumer<Identifier, EnchantmentStyling> provider, RegistryWrapper.WrapperLookup lookup) {
-        this.generate();
+        this.generate(lookup);
 
         TreeMap<Identifier, EnchantmentStyling> linkedHashMap = new TreeMap<>();
 
-        for (EnchantmentStyling enchantmentStyling : EnchantmentTextProviderBuilder.entries) {
-            Identifier key = Identifier.of(EnchantmentTextColor.MOD_ID, enchantmentStyling.getEnchantmentId().getPath());
+        for (EnchantmentStyling enchantmentStyling : EnchantmentTextColorProviderBuilder.entries) {
+            Identifier key = enchantmentStyling.getEnchantmentId();
 
             if (!linkedHashMap.containsKey(key)) {
                 linkedHashMap.put(
-                        Identifier.of(EnchantmentTextColor.MOD_ID, enchantmentStyling.getEnchantmentId().getPath()),
+                        Identifier.of(EnchantmentTextColor.MOD_ID, key.getNamespace() + "/" + enchantmentStyling.getEnchantmentId().getPath()),
                         enchantmentStyling
                 );
             } else {
@@ -86,18 +83,18 @@ public abstract class EnchantmentTextProvider extends FabricCodecDataProvider<En
      * See also {@link EnchantmentStyling#min(int)} <br>
      * See also {@link EnchantmentStyling#max(int)}
      */
-    public abstract void generate();
+    public abstract void generate(RegistryWrapper.WrapperLookup lookup);
 
     /**
-     * Add an entry to {@link EnchantmentTextProvider} to give generate a JSON file.  See {@link EnchantmentTextProvider#generate}
+     * Add an entry to {@link EnchantmentTextColorProvider} to give generate a JSON file.  See {@link EnchantmentTextColorProvider#generate}
      * for implementation details.
      *
      * @param enchantment the RegistryKey of the enchantment to provide styling for
-     * @return {@link EnchantmentTextProviderBuilder} a builder to modify text color and set conditions for the enchantment.
-     * See {@link EnchantmentTextProvider#generate} for implementation details.
+     * @return {@link EnchantmentTextColorProviderBuilder} a builder to modify text color and set conditions for the enchantment.
+     * See {@link EnchantmentTextColorProvider#generate} for implementation details.
      */
-    public EnchantmentTextProviderBuilder addEntry(RegistryKey<Enchantment> enchantment) {
-        return new EnchantmentTextProviderBuilder(enchantment);
+    public EnchantmentTextColorProviderBuilder addEntry(RegistryKey<Enchantment> enchantment) {
+        return new EnchantmentTextColorProviderBuilder(enchantment);
     }
 
     @Override
