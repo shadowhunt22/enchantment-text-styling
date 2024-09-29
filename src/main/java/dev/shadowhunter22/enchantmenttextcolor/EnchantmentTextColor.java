@@ -3,16 +3,16 @@
 // See LICENSE file in the project root for details.
 //
 
-package dev.shadowhunter22.coloredenchantments;
+package dev.shadowhunter22.enchantmenttextcolor;
 
-import dev.shadowhunter22.coloredenchantments.api.data.EnchantmentTextDataLoader;
+import dev.shadowhunter22.enchantmenttextcolor.api.data.EnchantmentTextDataLoader;
 import net.fabricmc.api.ModInitializer;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class ColoredEnchantments implements ModInitializer {
-	public static final String MOD_ID = "colored-enchantments";
+public class EnchantmentTextColor implements ModInitializer {
+	public static final String MOD_ID = "enchantment-text-color";
 	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
 	@Override

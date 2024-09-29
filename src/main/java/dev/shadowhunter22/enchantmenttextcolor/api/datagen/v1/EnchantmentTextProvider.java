@@ -3,11 +3,11 @@
 // See LICENSE file in the project root for details.
 //
 
-package dev.shadowhunter22.coloredenchantments.api.datagen.v1;
+package dev.shadowhunter22.enchantmenttextcolor.api.datagen.v1;
 
-import dev.shadowhunter22.coloredenchantments.ColoredEnchantments;
-import dev.shadowhunter22.coloredenchantments.api.registry.ModRegistryKeys;
-import dev.shadowhunter22.coloredenchantments.api.EnchantmentStyling;
+import dev.shadowhunter22.enchantmenttextcolor.EnchantmentTextColor;
+import dev.shadowhunter22.enchantmenttextcolor.api.registry.ModRegistryKeys;
+import dev.shadowhunter22.enchantmenttextcolor.api.EnchantmentStyling;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricCodecDataProvider;
 import net.minecraft.enchantment.Enchantment;
@@ -25,10 +25,10 @@ public abstract class EnchantmentTextProvider extends FabricCodecDataProvider<En
     // TODO implement DataProvider instead of extending FabricCodecDataProvider<> for greater flexibility
     //  in writing to different directories based off of the enchantment namespace
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(ColoredEnchantments.MOD_ID + "/EnchantmentTextProvider");
+    private static final Logger LOGGER = LoggerFactory.getLogger(EnchantmentTextColor.MOD_ID + "/EnchantmentTextProvider");
 
     protected EnchantmentTextProvider(FabricDataOutput dataOutput, CompletableFuture<RegistryWrapper.WrapperLookup> registriesFuture) {
-        super(dataOutput, registriesFuture, ModRegistryKeys.STYLING, EnchantmentStyling.getCodec());
+        super(dataOutput, registriesFuture, ModRegistryKeys.STYLING, EnchantmentStyling.CODEC);
     }
 
     @Override
@@ -38,11 +38,11 @@ public abstract class EnchantmentTextProvider extends FabricCodecDataProvider<En
         TreeMap<Identifier, EnchantmentStyling> linkedHashMap = new TreeMap<>();
 
         for (EnchantmentStyling enchantmentStyling : EnchantmentTextProviderBuilder.entries) {
-            Identifier key = Identifier.of(ColoredEnchantments.MOD_ID, enchantmentStyling.getEnchantmentId().getPath());
+            Identifier key = Identifier.of(EnchantmentTextColor.MOD_ID, enchantmentStyling.getEnchantmentId().getPath());
 
             if (!linkedHashMap.containsKey(key)) {
                 linkedHashMap.put(
-                        Identifier.of(ColoredEnchantments.MOD_ID, enchantmentStyling.getEnchantmentId().getPath()),
+                        Identifier.of(EnchantmentTextColor.MOD_ID, enchantmentStyling.getEnchantmentId().getPath()),
                         enchantmentStyling
                 );
             } else {
