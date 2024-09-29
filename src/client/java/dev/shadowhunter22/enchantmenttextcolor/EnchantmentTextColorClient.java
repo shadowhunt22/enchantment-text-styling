@@ -3,11 +3,11 @@
 // See LICENSE file in the project root for details.
 //
 
-package dev.shadowhunter22.coloredenchantments;
+package dev.shadowhunter22.enchantmenttextcolor;
 
 import net.fabricmc.api.ClientModInitializer;
 
-public class ColoredEnchantmentsClient implements ClientModInitializer {
+public class EnchantmentTextColorClient implements ClientModInitializer {
 	@Override
 	public void onInitializeClient() {
 	}
