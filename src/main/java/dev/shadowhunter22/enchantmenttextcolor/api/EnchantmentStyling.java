@@ -8,8 +8,8 @@ package dev.shadowhunter22.enchantmenttextcolor.api;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.enchantment.Enchantment;
-import net.minecraft.registry.BuiltinRegistries;
-import net.minecraft.registry.RegistryKey;
+import net.minecraft.registry.*;
+import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.text.TextColor;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.Identifier;
@@ -35,10 +35,18 @@ public class EnchantmentStyling {
     }
 
     public EnchantmentStyling(RegistryKey<Enchantment> enchantmentKey) {
-        Enchantment enchantment = BuiltinRegistries.createWrapperLookup().createRegistryLookup().getOrThrow(enchantmentKey.getRegistryRef()).getOrThrow(enchantmentKey).value();
         this.enchantmentId = enchantmentKey.getValue();
-        TextColor color = enchantment.description().getStyle().getColor();
-        this.color = color == null ? Formatting.GRAY.getColorValue() : color.getRgb();
+
+        // this will only work for vanilla enchantments
+        Optional<RegistryEntry.Reference<Enchantment>> enchantment = BuiltinRegistries.createWrapperLookup().getWrapperOrThrow(RegistryKeys.ENCHANTMENT).getOptional(enchantmentKey);
+
+        if (enchantment.isPresent()) {
+            TextColor color = enchantment.get().value().description().getStyle().getColor();
+            this.color = color == null ? Formatting.GRAY.getColorValue() : color.getRgb();
+        } else {
+            this.color = Formatting.GRAY.getColorValue();
+        }
+
         this.enchantmentStylingCondition = Optional.of(new EnchantmentStylingCondition());
     }
 
