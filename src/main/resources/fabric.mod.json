@@ -1,33 +1,29 @@
 {
 	"schemaVersion": 1,
-	"id": "colored-enchantments",
+	"id": "enchantment-text-color",
 	"version": "${version}",
-	"name": "Colored Enchantments",
-	"description": "Add colors to enchantment names!",
+	"name": "Enchantment Text Color",
+	"description": "Data-driven ability to add colors to enchantment names!",
 	"authors": [
 		"ShadowHunter22"
 	],
 	"contact": {
 		"homepage": "https://shadowhunt22.github.io/mod-wiki/",
-		"sources": "https://github.com/shadowhunt22/colored-enchantments"
+		"sources": "https://github.com/shadowhunt22/enchantment-text-color"
 	},
 	"license": "ARR",
-	"icon": "assets/colored-enchantments/icon.png",
+	"icon": "assets/enchantment-text-color/icon.png",
 	"environment": "*",
 	"entrypoints": {
 		"main": [
-			"dev.shadowhunter22.coloredenchantments.ColoredEnchantments"
+			"dev.shadowhunter22.enchantmenttextcolor.EnchantmentTextColor"
 		],
 		"client": [
-			"dev.shadowhunter22.coloredenchantments.ColoredEnchantmentsClient"
+			"dev.shadowhunter22.enchantmenttextcolor.EnchantmentTextColorClient"
 		]
 	},
 	"mixins": [
-		"colored-enchantments.mixins.json",
-		{
-			"config": "colored-enchantments.client.mixins.json",
-			"environment": "client"
-		}
+		"enchantment-text-color.mixins.json"
 	],
 	"depends": {
 		"fabricloader": ">=0.16.5",

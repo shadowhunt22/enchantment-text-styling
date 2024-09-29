@@ -1,7 +1,7 @@
-package dev.shadowhunter22.coloredenchantments.mixin;
+package dev.shadowhunter22.enchantmenttextcolor.mixin;
 
 import com.llamalad7.mixinextras.sugar.Local;
-import dev.shadowhunter22.coloredenchantments.api.data.EnchantmentTextDataLoader;
+import dev.shadowhunter22.enchantmenttextcolor.api.data.EnchantmentTextDataLoader;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
