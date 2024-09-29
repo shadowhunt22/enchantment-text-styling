@@ -1,0 +1,13 @@
+{
+	"schemaVersion": 1,
+	"id": "colored-enchantments-testmod",
+	"name": "Test Mod",
+	"version": "1.0.0",
+	"environment": "client",
+	"license": "ARR",
+	"entrypoints": {
+		"fabric-datagen": [
+			"dev.shadowhunter22.coloredenchantments.test.ColoredEnchantmentsDataGen"
+		]
+	}
+}
