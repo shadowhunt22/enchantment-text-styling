@@ -3,7 +3,7 @@ package dev.shadowhunter22.enchantmenttextcolor.test;//
 // See LICENSE file in the project root for details.
 //
 
-import dev.shadowhunter22.enchantmenttextcolor.api.datagen.v1.EnchantmentTextColorProvider;
+import dev.shadowhunter22.enchantmenttextcolor.api.datagen.EnchantmentTextColorProvider;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.registry.RegistryWrapper;
