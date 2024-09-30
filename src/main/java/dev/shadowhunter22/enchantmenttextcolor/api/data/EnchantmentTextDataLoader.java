@@ -18,8 +18,6 @@ import net.minecraft.resource.ResourceType;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.JsonHelper;
 import org.jetbrains.annotations.ApiStatus;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -54,7 +52,7 @@ public class EnchantmentTextDataLoader implements SimpleSynchronousResourceReloa
                         DataResult<EnchantmentStyling> result = EnchantmentStyling.CODEC.parse(JsonOps.INSTANCE, jsonElement);
                         EnchantmentStyling styling = result.resultOrPartial().orElseThrow();
 
-                        entries.computeIfAbsent(styling.getEnchantmentId(), k -> new ArrayList<>()).add(styling);
+                        entries.computeIfAbsent(styling.id(), k -> new ArrayList<>()).add(styling);
                     });
                 } catch (IOException e) {
                     throw new RuntimeException(e);
