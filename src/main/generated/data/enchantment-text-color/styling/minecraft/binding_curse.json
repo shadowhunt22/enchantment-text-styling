@@ -1,5 +1,7 @@
-{
-  "color": 11184810,
-  "conditions": {},
-  "enchantment": "minecraft:binding_curse"
-}
+[
+  {
+    "color": 11184810,
+    "conditions": {},
+    "enchantment": "minecraft:binding_curse"
+  }
+]
