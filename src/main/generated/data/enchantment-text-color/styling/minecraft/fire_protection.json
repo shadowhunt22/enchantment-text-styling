@@ -1,0 +1,10 @@
+[
+  {
+    "color": 5635925,
+    "conditions": {
+      "max": 4,
+      "min": 3
+    },
+    "enchantment": "minecraft:fire_protection"
+  }
+]

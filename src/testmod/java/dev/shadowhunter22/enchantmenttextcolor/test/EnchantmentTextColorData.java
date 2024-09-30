@@ -18,9 +18,42 @@ public class EnchantmentTextColorData extends EnchantmentTextColorProvider {
 
 	@Override
 	public void generate(RegistryWrapper.WrapperLookup lookup) {
-		// testing to see if the color will be red when adding .color() to the method chain
-		this.addEntry(Enchantments.AQUA_AFFINITY)
+		this.addEntry(Enchantments.PROTECTION)
+				.color(Formatting.RED.getColorValue())
+				.specificCondition(1)
+				.add();
+
+		this.addEntry(Enchantments.PROTECTION)
+				.color(Formatting.GOLD.getColorValue())
+				.specificCondition(2)
+				.add();
+
+		this.addEntry(Enchantments.PROTECTION)
+				.color(Formatting.YELLOW.getColorValue())
+				.specificCondition(3)
+				.add();
+
+		this.addEntry(Enchantments.PROTECTION)
 				.color(Formatting.GREEN.getColorValue())
+				.specificCondition(4)
+				.add();
+
+		this.addEntry(Enchantments.BLAST_PROTECTION)
+				.color(Formatting.GREEN.getColorValue())
+				.min(2)
+				.max(3)
+				.add();
+
+		this.addEntry(Enchantments.PROJECTILE_PROTECTION)
+				.color(Formatting.RED.getColorValue())
+				.min(1)
+				.max(2)
+				.add();
+
+		this.addEntry(Enchantments.FIRE_PROTECTION)
+				.color(Formatting.GREEN.getColorValue())
+				.min(3)
+				.max(4)
 				.add();
 
 		// testing to see if the color will still be red without adding .color() to the method chain
