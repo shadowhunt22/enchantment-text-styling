@@ -1,8 +1,9 @@
 {
 	"required": true,
-	"package": "dev.shadowhunter22.coloredenchantments.mixin.client",
+	"package": "com.shadowhunter22.coloredenchantments.mixin.client",
 	"compatibilityLevel": "JAVA_21",
 	"client": [
+		"ExampleClientMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1

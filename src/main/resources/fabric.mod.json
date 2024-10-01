@@ -16,10 +16,10 @@
 	"environment": "*",
 	"entrypoints": {
 		"main": [
-			"dev.shadowhunter22.coloredenchantments.ColoredEnchantments"
+			"com.shadowhunter22.coloredenchantments.ColoredEnchantments"
 		],
 		"client": [
-			"dev.shadowhunter22.coloredenchantments.ColoredEnchantmentsClient"
+			"com.shadowhunter22.coloredenchantments.ColoredEnchantmentsClient"
 		]
 	},
 	"mixins": [
