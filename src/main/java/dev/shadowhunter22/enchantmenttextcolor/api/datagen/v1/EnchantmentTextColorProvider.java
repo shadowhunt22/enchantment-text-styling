@@ -3,7 +3,7 @@
 // See LICENSE file in the project root for details.
 //
 
-package dev.shadowhunter22.enchantmenttextcolor.api.datagen;
+package dev.shadowhunter22.enchantmenttextcolor.api.datagen.v1;
 
 import dev.shadowhunter22.enchantmenttextcolor.EnchantmentTextColor;
 import dev.shadowhunter22.enchantmenttextcolor.api.registry.ModRegistryKeys;
@@ -14,6 +14,8 @@ import net.minecraft.enchantment.Enchantment;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.util.Identifier;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -35,7 +37,7 @@ public abstract class EnchantmentTextColorProvider extends FabricCodecDataProvid
         for (EnchantmentStyling enchantmentStyling : EnchantmentTextColorProviderBuilder.entries) {
             Identifier key = Identifier.of(
                     EnchantmentTextColor.MOD_ID,
-                    enchantmentStyling.id().getNamespace() + "/" + enchantmentStyling.id().getPath()
+                    enchantmentStyling.getEnchantmentId().getNamespace() + "/" + enchantmentStyling.getEnchantmentId().getPath()
             );
 
             hashmap.computeIfAbsent(key, k -> new ArrayList<>()).add(enchantmentStyling);
@@ -45,7 +47,7 @@ public abstract class EnchantmentTextColorProvider extends FabricCodecDataProvid
     }
 
     /**
-     * Generate JSON files for enchantments.  Here is an example of how to generate a JSON file for an enchantment:
+     * Generate json files for enchantments.  Here is an example of how to generate a JSON file for an enchantment:
      *
      * <pre>
      * {@code
@@ -66,22 +68,21 @@ public abstract class EnchantmentTextColorProvider extends FabricCodecDataProvid
      * 	        .max(2)
      *
      * 	        // This is required to be called in order to generate the JSON file
-     * 	        .add();
+     * 	        .build();
      *  }
      * }
      * }
      * </pre>
      *
-     * @see EnchantmentTextColorProviderBuilder#color(int)
-     * @see EnchantmentTextColorProviderBuilder#specificCondition(int)
-     * @see EnchantmentTextColorProviderBuilder#min(int)
-     * @see EnchantmentTextColorProviderBuilder#max(int)
-     * @see EnchantmentTextColorProviderBuilder#add()
+     * See also {@link EnchantmentStyling#color(int)} <br>
+     * See also {@link EnchantmentStyling#value(int)} <br>
+     * See also {@link EnchantmentStyling#min(int)} <br>
+     * See also {@link EnchantmentStyling#max(int)}
      */
     public abstract void generate(RegistryWrapper.WrapperLookup lookup);
 
     /**
-     * Add an entry to {@link EnchantmentTextColorProvider} to generate a JSON file.  See {@link EnchantmentTextColorProvider#generate}
+     * Add an entry to {@link EnchantmentTextColorProvider} to give generate a JSON file.  See {@link EnchantmentTextColorProvider#generate}
      * for implementation details.
      *
      * @param enchantment the RegistryKey of the enchantment to provide styling for
