@@ -1,0 +1,10 @@
+{
+	"schemaVersion": 1,
+	"id": "enchantment-text-color-testmod-client",
+	"version": "1.0.0",
+	"entrypoints": {
+		"client": [
+			"dev.shadowhunter22.enchantmenttextcolor.test.EnchantmentTextColorTestmodClient"
+		]
+	}
+}
