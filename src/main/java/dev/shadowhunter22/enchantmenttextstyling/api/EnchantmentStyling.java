@@ -16,10 +16,10 @@ import net.minecraft.util.Identifier;
 
 import java.util.Optional;
 
-public record EnchantmentStyling(Identifier id, int color, EnchantmentStylingCondition condition) {
+public record EnchantmentStyling(Identifier id, EnchantmentTextStyles styles, EnchantmentStylingCondition condition) {
     public static final Codec<EnchantmentStyling> CODEC = RecordCodecBuilder.create(builder -> builder.group(
             Identifier.CODEC.fieldOf("enchantment").forGetter(EnchantmentStyling::id),
-            Codec.INT.fieldOf("color").forGetter(EnchantmentStyling::color),
+            EnchantmentTextStyles.CODEC.fieldOf("styles").forGetter(EnchantmentStyling::styles),
             EnchantmentStylingCondition.CODEC.optionalFieldOf("conditions", EnchantmentStylingCondition.EMPTY).forGetter(EnchantmentStyling::condition)
     ).apply(builder, EnchantmentStyling::new));
 
@@ -29,10 +29,17 @@ public record EnchantmentStyling(Identifier id, int color, EnchantmentStylingCon
 
     public static class Builder {
         private final Identifier id;
+
         private int color;
-        private int value;
-        private int min;
-        private int max;
+        private Boolean bold;
+        private Boolean italic;
+        private Boolean underlined;
+        private Boolean strikethrough;
+        private Boolean obfuscated;
+
+        private Integer value;
+        private Integer min;
+        private Integer max;
 
         public Builder(RegistryKey<Enchantment> entry) {
             this.id = entry.getValue();
@@ -49,9 +56,28 @@ public record EnchantmentStyling(Identifier id, int color, EnchantmentStylingCon
             }
         }
 
-        public Builder color(int value) {
+        public void color(int value) {
             this.color = value;
-            return this;
+        }
+
+        public void bold(boolean value) {
+            this.bold = value;
+        }
+
+        public void italic(boolean value) {
+            this.italic = value;
+        }
+
+        public void underlined(boolean value) {
+            this.underlined = value;
+        }
+
+        public void strikethrough(boolean value) {
+            this.strikethrough = value;
+        }
+
+        public void obfuscated(boolean value) {
+            this.obfuscated = value;
         }
 
         public void value(int value) {
@@ -69,13 +95,35 @@ public record EnchantmentStyling(Identifier id, int color, EnchantmentStylingCon
         public EnchantmentStyling build() {
             return new EnchantmentStyling(
                     this.id,
-                    this.color,
+                    new EnchantmentTextStyles(
+                        this.color,
+                        Optional.ofNullable(this.bold),
+                        Optional.ofNullable(this.italic),
+                        Optional.ofNullable(this.underlined),
+                        Optional.ofNullable(this.strikethrough),
+                        Optional.ofNullable(this.obfuscated)
+                    ),
                     new EnchantmentStylingCondition(
-                            this.value == 0 ? Optional.empty() : Optional.of(this.value),
-                            this.min == 0 ? Optional.empty() : Optional.of(this.min),
-                            this.max == 0 ? Optional.empty() : Optional.of(this.max)
+                        Optional.ofNullable(this.value),
+                        Optional.ofNullable(this.min),
+                        Optional.ofNullable(this.max)
                     )
             );
+        }
+    }
+
+    public record EnchantmentTextStyles(int color, Optional<Boolean> bold, Optional<Boolean> italic, Optional<Boolean> underlined, Optional<Boolean> strikethrough, Optional<Boolean> obfuscated) {
+        public static final Codec<EnchantmentTextStyles> CODEC = RecordCodecBuilder.create(builder -> builder.group(
+                Codec.INT.fieldOf("color").forGetter(EnchantmentTextStyles::color),
+                Codec.BOOL.optionalFieldOf("bold").forGetter(EnchantmentTextStyles::bold),
+                Codec.BOOL.optionalFieldOf("italic").forGetter(EnchantmentTextStyles::italic),
+                Codec.BOOL.optionalFieldOf("underlined").forGetter(EnchantmentTextStyles::underlined),
+                Codec.BOOL.optionalFieldOf("strikethrough").forGetter(EnchantmentTextStyles::strikethrough),
+                Codec.BOOL.optionalFieldOf("obfuscated").forGetter(EnchantmentTextStyles::obfuscated)
+        ).apply(builder, EnchantmentTextStyles::new));
+
+        public boolean unwrapNullableBoolean(Optional<Boolean> value) {
+            return value.orElse(false);
         }
     }
 

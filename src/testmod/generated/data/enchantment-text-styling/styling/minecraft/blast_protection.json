@@ -1,10 +1,15 @@
 [
   {
-    "color": 5635925,
     "conditions": {
       "max": 3,
       "min": 2
     },
-    "enchantment": "minecraft:blast_protection"
+    "enchantment": "minecraft:blast_protection",
+    "styles": {
+      "bold": true,
+      "color": 5635925,
+      "obfuscated": true,
+      "underlined": true
+    }
   }
 ]

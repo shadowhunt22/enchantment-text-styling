@@ -42,18 +42,23 @@ public class EnchantmentTextStylingData extends EnchantmentTextStylingProvider {
 				.color(Formatting.GREEN.getColorValue())
 				.min(2)
 				.max(3)
+				.bold()
+				.underlined()
+				.obfuscated()
 				.add();
 
 		this.addEntry(Enchantments.PROJECTILE_PROTECTION)
 				.color(Formatting.RED.getColorValue())
 				.min(1)
 				.max(2)
+				.italic()
 				.add();
 
 		this.addEntry(Enchantments.FIRE_PROTECTION)
 				.color(Formatting.GREEN.getColorValue())
 				.min(3)
 				.max(4)
+				.strikethrough()
 				.add();
 
 		// testing to see if the color will still be red without adding .color() to the method chain

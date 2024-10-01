@@ -52,8 +52,58 @@ public class EnchantmentTextStylingProviderBuilder {
     }
 
     /**
+     * Bold text
+     *
+     * @see EnchantmentStyling.Builder#bold(boolean)
+     */
+    public EnchantmentTextStylingProviderBuilder bold() {
+        this.entry.bold(true);
+        return this;
+    }
+
+    /**
+     * Italic text
+     *
+     * @see EnchantmentStyling.Builder#italic(boolean)
+     */
+    public EnchantmentTextStylingProviderBuilder italic() {
+        this.entry.italic(true);
+        return this;
+    }
+
+    /**
+     * Underlined text
+     *
+     * @see EnchantmentStyling.Builder#underlined(boolean)
+     */
+    public EnchantmentTextStylingProviderBuilder underlined() {
+        this.entry.underlined(true);
+        return this;
+    }
+
+    /**
+     * Strikethrough text
+     *
+     * @see EnchantmentStyling.Builder#strikethrough(boolean)
+     */
+    public EnchantmentTextStylingProviderBuilder strikethrough() {
+        this.entry.strikethrough(true);
+        return this;
+    }
+
+    /**
+     * Obfuscated text
+     *
+     * @see EnchantmentStyling.Builder#obfuscated(boolean)
+     */
+    public EnchantmentTextStylingProviderBuilder obfuscated() {
+        this.entry.obfuscated(true);
+        return this;
+    }
+
+    /**
      * This value represents when the custom enchantment styling will be applied.  For example, if you supply a {@code 2} and the
-     * level of the enchantment is {@code 2}, then the {@link EnchantmentStyling#color} will be applied to the text of the
+     * level of the enchantment is {@code 2}, then the {@link dev.shadowhunter22.enchantmenttextstyling.api.EnchantmentStyling.EnchantmentTextStyles#color} will be applied to the text of the
      * enchantment.
      *
      * @see EnchantmentStyling.Builder#value(int)

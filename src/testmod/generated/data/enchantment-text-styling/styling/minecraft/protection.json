@@ -1,30 +1,38 @@
 [
   {
-    "color": 16733525,
     "conditions": {
       "value": 1
     },
-    "enchantment": "minecraft:protection"
+    "enchantment": "minecraft:protection",
+    "styles": {
+      "color": 16733525
+    }
   },
   {
-    "color": 16755200,
     "conditions": {
       "value": 2
     },
-    "enchantment": "minecraft:protection"
+    "enchantment": "minecraft:protection",
+    "styles": {
+      "color": 16755200
+    }
   },
   {
-    "color": 16777045,
     "conditions": {
       "value": 3
     },
-    "enchantment": "minecraft:protection"
+    "enchantment": "minecraft:protection",
+    "styles": {
+      "color": 16777045
+    }
   },
   {
-    "color": 5635925,
     "conditions": {
       "value": 4
     },
-    "enchantment": "minecraft:protection"
+    "enchantment": "minecraft:protection",
+    "styles": {
+      "color": 5635925
+    }
   }
 ]
