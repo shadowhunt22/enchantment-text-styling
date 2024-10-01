@@ -3,7 +3,7 @@
 // See LICENSE file in the project root for details.
 //
 
-package dev.shadowhunter22.enchantmenttextcolor.api;
+package dev.shadowhunter22.enchantmenttextstyling.api;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;

@@ -4,7 +4,7 @@
 	"version": "1.0.0",
 	"entrypoints": {
 		"fabric-datagen": [
-			"dev.shadowhunter22.enchantmenttextcolor.test.ColoredEnchantmentsTestmodDataGen"
+			"dev.shadowhunter22.enchantmenttextstyling.test.EnchantmentTextStylingTestmodDataGen"
 		]
 	}
 }

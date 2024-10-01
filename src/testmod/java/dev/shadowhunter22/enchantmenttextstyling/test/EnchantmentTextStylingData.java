@@ -1,9 +1,9 @@
-package dev.shadowhunter22.enchantmenttextcolor.test;//
+package dev.shadowhunter22.enchantmenttextstyling.test;//
 // Copyright (c) 2024 by ShadowHunter22. All rights reserved.
 // See LICENSE file in the project root for details.
 //
 
-import dev.shadowhunter22.enchantmenttextcolor.api.datagen.EnchantmentTextColorProvider;
+import dev.shadowhunter22.enchantmenttextstyling.api.datagen.EnchantmentTextStylingProvider;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.registry.RegistryWrapper;
@@ -11,8 +11,8 @@ import net.minecraft.util.Formatting;
 
 import java.util.concurrent.CompletableFuture;
 
-public class EnchantmentTextColorData extends EnchantmentTextColorProvider {
-	protected EnchantmentTextColorData(FabricDataOutput dataOutput, CompletableFuture<RegistryWrapper.WrapperLookup> registriesFuture) {
+public class EnchantmentTextStylingData extends EnchantmentTextStylingProvider {
+	protected EnchantmentTextStylingData(FabricDataOutput dataOutput, CompletableFuture<RegistryWrapper.WrapperLookup> registriesFuture) {
 		super(dataOutput, registriesFuture);
 	}
 

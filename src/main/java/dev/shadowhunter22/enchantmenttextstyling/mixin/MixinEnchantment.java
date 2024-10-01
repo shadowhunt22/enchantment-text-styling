@@ -1,8 +1,8 @@
-package dev.shadowhunter22.enchantmenttextcolor.mixin;
+package dev.shadowhunter22.enchantmenttextstyling.mixin;
 
 import com.llamalad7.mixinextras.sugar.Local;
-import dev.shadowhunter22.enchantmenttextcolor.api.EnchantmentStyling;
-import dev.shadowhunter22.enchantmenttextcolor.api.data.EnchantmentTextDataLoader;
+import dev.shadowhunter22.enchantmenttextstyling.api.EnchantmentStyling;
+import dev.shadowhunter22.enchantmenttextstyling.api.data.EnchantmentTextStylingDataLoader;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
@@ -25,7 +25,7 @@ import java.util.Optional;
 public abstract class MixinEnchantment {
     @Inject(method = "getName", at = @At(value = "INVOKE", target = "Lnet/minecraft/text/Texts;setStyleIfAbsent(Lnet/minecraft/text/MutableText;Lnet/minecraft/text/Style;)Lnet/minecraft/text/MutableText;", ordinal = 1))
     private static void addEnchantmentColor(RegistryEntry<Enchantment> enchantment, int level, CallbackInfoReturnable<Text> cir, @Local MutableText mutableText) {
-        EnchantmentTextDataLoader.getEntries().forEach((id, stylings) -> stylings.forEach(styling -> {
+        EnchantmentTextStylingDataLoader.getEntries().forEach((id, stylings) -> stylings.forEach(styling -> {
             RegistryKey<Enchantment> enchantmentKey = RegistryKey.of(RegistryKeys.ENCHANTMENT, id);
 
             if (enchantment.matchesId(enchantmentKey.getValue())) {
