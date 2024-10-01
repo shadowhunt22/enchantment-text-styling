@@ -3,9 +3,9 @@
 // See LICENSE file in the project root for details.
 //
 
-package dev.shadowhunter22.enchantmenttextcolor.api.datagen.v1;
+package dev.shadowhunter22.coloredenchantments.api.datagen.v1;
 
-import dev.shadowhunter22.enchantmenttextcolor.api.EnchantmentStyling;
+import dev.shadowhunter22.coloredenchantments.api.EnchantmentStyling;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.registry.RegistryKey;
 

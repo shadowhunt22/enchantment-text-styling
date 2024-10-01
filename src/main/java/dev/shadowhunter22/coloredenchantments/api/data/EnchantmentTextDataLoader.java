@@ -3,13 +3,13 @@
 // See LICENSE file in the project root for details.
 //
 
-package dev.shadowhunter22.enchantmenttextcolor.api.data;
+package dev.shadowhunter22.coloredenchantments.api.data;
 
 import com.google.gson.JsonObject;
 import com.mojang.serialization.DataResult;
 import com.mojang.serialization.JsonOps;
-import dev.shadowhunter22.enchantmenttextcolor.EnchantmentTextColor;
-import dev.shadowhunter22.enchantmenttextcolor.api.EnchantmentStyling;
+import dev.shadowhunter22.coloredenchantments.ColoredEnchantments;
+import dev.shadowhunter22.coloredenchantments.api.EnchantmentStyling;
 import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
 import net.fabricmc.fabric.api.resource.SimpleSynchronousResourceReloadListener;
 import net.minecraft.resource.Resource;
@@ -43,11 +43,11 @@ public class EnchantmentTextDataLoader implements SimpleSynchronousResourceReloa
         entries.clear();
 
         for (Map.Entry<Identifier, Resource> entry : manager.findResources("styling", path -> path.getPath().endsWith(".json")).entrySet()) {
-            if (entry.getKey().getNamespace().equals(EnchantmentTextColor.MOD_ID)) {
+            if (entry.getKey().getNamespace().equals(ColoredEnchantments.MOD_ID)) {
                 try (InputStream stream = entry.getValue().getInputStream()) {
                     JsonObject jsonObject = JsonHelper.deserialize(new InputStreamReader(stream));
 
-                    DataResult<EnchantmentStyling> result = EnchantmentStyling.CODEC.parse(JsonOps.INSTANCE, jsonObject);
+                    DataResult<EnchantmentStyling> result = EnchantmentStyling.getCodec().parse(JsonOps.INSTANCE, jsonObject);
 
                     EnchantmentStyling styling = result.resultOrPartial().orElseThrow();
 
@@ -61,6 +61,6 @@ public class EnchantmentTextDataLoader implements SimpleSynchronousResourceReloa
 
     @Override
     public Identifier getFabricId() {
-        return Identifier.of(EnchantmentTextColor.MOD_ID, "styling");
+        return Identifier.of(ColoredEnchantments.MOD_ID, "styling");
     }
 }

@@ -1,10 +1,10 @@
 {
 	"schemaVersion": 1,
-	"id": "enchantment-text-color-testmod",
+	"id": "colored-enchantments-testmod",
 	"version": "1.0.0",
 	"entrypoints": {
 		"fabric-datagen": [
-			"dev.shadowhunter22.enchantmenttextcolor.test.ColoredEnchantmentsTestmodDataGen"
+			"dev.shadowhunter22.coloredenchantments.test.ColoredEnchantmentsTestmodDataGen"
 		]
 	}
 }
