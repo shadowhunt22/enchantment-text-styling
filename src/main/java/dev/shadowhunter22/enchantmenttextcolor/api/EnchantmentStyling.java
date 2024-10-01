@@ -112,11 +112,7 @@ public class EnchantmentStyling {
         Optional<Integer> min = Optional.empty();
         Optional<Integer> max = Optional.empty();
 
-        private EnchantmentStylingCondition(Optional<Integer> value, Optional<Integer> min, Optional<Integer> max) {
-            this.value = value;
-            this.min = min;
-            this.max = max;
-        }
+        private EnchantmentStylingCondition(Optional<Integer> value, Optional<Integer> min, Optional<Integer> max) {}
 
         public EnchantmentStylingCondition() {}
 

@@ -17,33 +17,37 @@ import net.minecraft.util.Identifier;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import java.util.TreeMap;
 import java.util.concurrent.CompletableFuture;
 import java.util.function.BiConsumer;
 
-public abstract class EnchantmentTextColorProvider extends FabricCodecDataProvider<List<EnchantmentStyling>> {
+public abstract class EnchantmentTextColorProvider extends FabricCodecDataProvider<EnchantmentStyling> {
+    private static final Logger LOGGER = LoggerFactory.getLogger(EnchantmentTextColor.MOD_ID + "/EnchantmentTextColorProvider");
+
     protected EnchantmentTextColorProvider(FabricDataOutput dataOutput, CompletableFuture<RegistryWrapper.WrapperLookup> registriesFuture) {
-        super(dataOutput, registriesFuture, ModRegistryKeys.STYLING, EnchantmentStyling.CODEC.listOf());
+        super(dataOutput, registriesFuture, ModRegistryKeys.STYLING, EnchantmentStyling.CODEC);
     }
 
     @Override
-    protected void configure(BiConsumer<Identifier, List<EnchantmentStyling>> provider, RegistryWrapper.WrapperLookup lookup) {
+    protected void configure(BiConsumer<Identifier, EnchantmentStyling> provider, RegistryWrapper.WrapperLookup lookup) {
         this.generate(lookup);
 
-        HashMap<Identifier, List<EnchantmentStyling>> hashmap = new HashMap<>();
+        TreeMap<Identifier, EnchantmentStyling> linkedHashMap = new TreeMap<>();
 
         for (EnchantmentStyling enchantmentStyling : EnchantmentTextColorProviderBuilder.entries) {
-            Identifier key = Identifier.of(
-                    EnchantmentTextColor.MOD_ID,
-                    enchantmentStyling.getEnchantmentId().getNamespace() + "/" + enchantmentStyling.getEnchantmentId().getPath()
-            );
+            Identifier key = enchantmentStyling.getEnchantmentId();
 
-            hashmap.computeIfAbsent(key, k -> new ArrayList<>()).add(enchantmentStyling);
+            if (!linkedHashMap.containsKey(key)) {
+                linkedHashMap.put(
+                        Identifier.of(EnchantmentTextColor.MOD_ID, key.getNamespace() + "/" + enchantmentStyling.getEnchantmentId().getPath()),
+                        enchantmentStyling
+                );
+            } else {
+                LOGGER.warn("Found duplicate entry for {}. Ignoring.", key);
+            }
         }
 
-        hashmap.forEach(provider);
+        linkedHashMap.forEach(provider);
     }
 
     /**
