@@ -11,36 +11,36 @@ import net.minecraft.registry.RegistryKey;
 
 import java.util.ArrayList;
 
-public class EnchantmentTextColorProviderBuilder {
+public class EnchantmentTextProviderBuilder {
     protected static final ArrayList<EnchantmentStyling> entries = new ArrayList<>();
     private final EnchantmentStyling entry;
 
-    protected EnchantmentTextColorProviderBuilder(RegistryKey<Enchantment> entry) {
+    protected EnchantmentTextProviderBuilder(RegistryKey<Enchantment> entry) {
         this.entry = new EnchantmentStyling(entry);
     }
 
-    public EnchantmentTextColorProviderBuilder color(int value) {
+    public EnchantmentTextProviderBuilder color(int value) {
         this.entry.color(value);
         return this;
     }
 
-    public EnchantmentTextColorProviderBuilder specificCondition(int value) {
+    public EnchantmentTextProviderBuilder specificCondition(int value) {
         this.entry.value(value);
         return this;
     }
 
-    public EnchantmentTextColorProviderBuilder min(int value) {
+    public EnchantmentTextProviderBuilder min(int value) {
         this.entry.min(value);
         return this;
     }
 
-    public EnchantmentTextColorProviderBuilder max(int value) {
+    public EnchantmentTextProviderBuilder max(int value) {
         this.entry.max(value);
 
         return this;
     }
 
-    public void add() {
+    public void build() {
         entries.add(this.entry);
     }
 }
