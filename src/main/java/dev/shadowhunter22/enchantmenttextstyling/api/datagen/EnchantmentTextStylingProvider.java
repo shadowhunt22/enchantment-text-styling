@@ -60,10 +60,18 @@ public abstract class EnchantmentTextStylingProvider extends FabricCodecDataProv
      *              // It is required to call this or a default value will apply.
      * 	        .color(Formatting.AQUA.getColorValue())
      *
-     * 	        // These chained methods are optional.  See further documentation below concerning these values
-     * 	        .specificCondition(0)
-     * 	        .min(0)
-     * 	        .max(2)
+     * 	        // Optional styling methods
+     * 	        .bold()
+     * 	        .italic()
+     * 	        .underlined()
+     * 	        .strikethrough()
+     * 	        .obfuscated()
+     *
+     * 	        // These chained methods are also optional.  See further documentation below concerning these
+     * 	        // values you pass and what they do
+     * 	        .specificCondition(int)
+     * 	        .min(int)
+     * 	        .max(int)
      *
      * 	        // This is required to be called in order to generate the JSON file
      * 	        .add();
@@ -73,6 +81,7 @@ public abstract class EnchantmentTextStylingProvider extends FabricCodecDataProv
      * </pre>
      *
      * @see EnchantmentTextStylingProviderBuilder#color(int)
+     *
      * @see EnchantmentTextStylingProviderBuilder#specificCondition(int)
      * @see EnchantmentTextStylingProviderBuilder#min(int)
      * @see EnchantmentTextStylingProviderBuilder#max(int)
@@ -86,7 +95,7 @@ public abstract class EnchantmentTextStylingProvider extends FabricCodecDataProv
      *
      * @param enchantment the RegistryKey of the enchantment to provide styling for
      * @return {@link EnchantmentTextStylingProviderBuilder} a builder to modify text color and set conditions for the enchantment.
-     * See {@link EnchantmentTextStylingProvider#generate} for implementation details.
+     * @see EnchantmentTextStylingProvider#generate
      */
     public EnchantmentTextStylingProviderBuilder addEntry(RegistryKey<Enchantment> enchantment) {
         return new EnchantmentTextStylingProviderBuilder(enchantment);

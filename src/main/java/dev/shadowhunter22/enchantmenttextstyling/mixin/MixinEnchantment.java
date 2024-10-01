@@ -37,7 +37,7 @@ public abstract class MixinEnchantment {
     // this mod is an example of why I love coding.  this method is an example of why I hate coding :)
     @Unique private static void setStyle(MutableText mutableText, int level, EnchantmentStyling styling) {
         EnchantmentStyling.EnchantmentStylingCondition condition = styling.condition();
-        Style style = Style.EMPTY.withColor(styling.color());
+        Style style = getStyles(styling.styles());
 
         if (!styling.condition().isEmpty()) {
             Optional<Integer> value = condition.value();
@@ -66,5 +66,18 @@ public abstract class MixinEnchantment {
         } else {
             Texts.setStyleIfAbsent(mutableText, style);
         }
+    }
+
+    @Unique private static Style getStyles(EnchantmentStyling.EnchantmentTextStyles styles) {
+        Style style = Style.EMPTY;
+
+        style = style.withColor(styles.color());
+        style = style.withBold(styles.unwrapNullableBoolean(styles.bold()));
+        style = style.withItalic(styles.unwrapNullableBoolean(styles.italic()));
+        style = style.withUnderline(styles.unwrapNullableBoolean(styles.underlined()));
+        style = style.withStrikethrough(styles.unwrapNullableBoolean(styles.strikethrough()));
+        style = style.withObfuscated(styles.unwrapNullableBoolean(styles.obfuscated()));
+
+        return style;
     }
 }

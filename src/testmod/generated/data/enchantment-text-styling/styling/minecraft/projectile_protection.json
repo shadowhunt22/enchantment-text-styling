@@ -1,10 +1,13 @@
 [
   {
-    "color": 16733525,
     "conditions": {
       "max": 2,
       "min": 1
     },
-    "enchantment": "minecraft:projectile_protection"
+    "enchantment": "minecraft:projectile_protection",
+    "styles": {
+      "color": 16733525,
+      "italic": true
+    }
   }
 ]
