@@ -1,7 +1,5 @@
-[
-  {
-    "color": 11184810,
-    "conditions": {},
-    "enchantment": "minecraft:fire_aspect"
-  }
-]
+{
+  "color": 11184810,
+  "conditions": {},
+  "enchantment": "minecraft:fire_aspect"
+}
