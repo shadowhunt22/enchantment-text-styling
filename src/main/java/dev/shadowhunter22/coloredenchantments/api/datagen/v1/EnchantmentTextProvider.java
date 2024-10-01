@@ -6,10 +6,10 @@
 package dev.shadowhunter22.coloredenchantments.api.datagen.v1;
 
 import dev.shadowhunter22.coloredenchantments.ColoredEnchantments;
-import dev.shadowhunter22.coloredenchantments.api.registry.ModRegistryKeys;
 import dev.shadowhunter22.coloredenchantments.api.EnchantmentStyling;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricCodecDataProvider;
+import net.minecraft.data.DataOutput;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryWrapper;
@@ -22,13 +22,10 @@ import java.util.concurrent.CompletableFuture;
 import java.util.function.BiConsumer;
 
 public abstract class EnchantmentTextProvider extends FabricCodecDataProvider<EnchantmentStyling> {
-    // TODO implement DataProvider instead of extending FabricCodecDataProvider<> for greater flexibility
-    //  in writing to different directories based off of the enchantment namespace
-
     private static final Logger LOGGER = LoggerFactory.getLogger(ColoredEnchantments.MOD_ID + "/EnchantmentTextProvider");
 
     protected EnchantmentTextProvider(FabricDataOutput dataOutput, CompletableFuture<RegistryWrapper.WrapperLookup> registriesFuture) {
-        super(dataOutput, registriesFuture, ModRegistryKeys.STYLING, EnchantmentStyling.getCodec());
+        super(dataOutput, registriesFuture, DataOutput.OutputType.DATA_PACK, "enchantment/styling", EnchantmentStyling.getCodec());
     }
 
     @Override

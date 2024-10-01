@@ -18,6 +18,12 @@ sourceSets {
 	testmod {
 		compileClasspath += main.compileClasspath
 		runtimeClasspath += main.runtimeClasspath
+
+		resources {
+			srcDirs += [
+				'src/testmod/generated'
+			]
+		}
 	}
 }
 
@@ -30,10 +36,26 @@ loom {
 			sourceSet sourceSets.client
 		}
 	}
-}
 
-fabricApi {
-	configureDataGeneration()
+	runs {
+		testmodServer {
+			server()
+			ideConfigGenerated project.rootProject == project
+			name = "Testmod Server"
+			source sourceSets.testmod
+		}
+
+		datagen {
+			inherit testmodServer
+			name "Data Generation"
+			vmArg "-Dfabric-api.datagen"
+			vmArg "-Dfabric-api.datagen.output-dir=${file("src/testmod/generated")}"
+			vmArg "-Dfabric-api.datagen.strict-validation"
+
+			ideConfigGenerated = true
+			runDir "build/datagen"
+		}
+	}
 }
 
 dependencies {
