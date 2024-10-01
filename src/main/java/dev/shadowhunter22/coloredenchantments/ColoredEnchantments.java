@@ -5,7 +5,6 @@
 
 package dev.shadowhunter22.coloredenchantments;
 
-import dev.shadowhunter22.coloredenchantments.api.data.EnchantmentTextDataLoader;
 import net.fabricmc.api.ModInitializer;
 
 import org.slf4j.Logger;
@@ -17,8 +16,6 @@ public class ColoredEnchantments implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
-		EnchantmentTextDataLoader.listener();
-
 		LOGGER.info("Successfully loaded {} mod!", MOD_ID);
 	}
 }
