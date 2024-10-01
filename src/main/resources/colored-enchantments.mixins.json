@@ -1,8 +1,9 @@
 {
 	"required": true,
-	"package": "dev.shadowhunter22.coloredenchantments.mixin",
+	"package": "com.shadowhunter22.coloredenchantments.mixin",
 	"compatibilityLevel": "JAVA_21",
 	"mixins": [
+		"ExampleMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1

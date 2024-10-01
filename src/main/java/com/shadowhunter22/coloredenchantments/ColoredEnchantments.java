@@ -3,7 +3,7 @@
 // See LICENSE file in the project root for details.
 //
 
-package dev.shadowhunter22.coloredenchantments;
+package com.shadowhunter22.coloredenchantments;
 
 import net.fabricmc.api.ModInitializer;
 
