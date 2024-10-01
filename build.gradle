@@ -32,6 +32,26 @@ loom {
 	}
 }
 
+sourceSets {
+	testmod {
+		resources {
+			srcDirs += [
+					'src/testmod/generated'
+			]
+		}
+	}
+
+	testmodClient {
+		compileClasspath += main.compileClasspath
+		runtimeClasspath += main.runtimeClasspath
+		compileClasspath += client.compileClasspath
+		runtimeClasspath += client.runtimeClasspath
+
+		compileClasspath += testmod.compileClasspath
+		runtimeClasspath += testmod.runtimeClasspath
+	}
+}
+
 fabricApi {
 	configureDataGeneration()
 }
