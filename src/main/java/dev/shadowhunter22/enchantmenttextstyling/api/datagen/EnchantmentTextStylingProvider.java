@@ -3,11 +3,11 @@
 // See LICENSE file in the project root for details.
 //
 
-package dev.shadowhunter22.enchantmenttextcolor.api.datagen;
+package dev.shadowhunter22.enchantmenttextstyling.api.datagen;
 
-import dev.shadowhunter22.enchantmenttextcolor.EnchantmentTextColor;
-import dev.shadowhunter22.enchantmenttextcolor.api.registry.ModRegistryKeys;
-import dev.shadowhunter22.enchantmenttextcolor.api.EnchantmentStyling;
+import dev.shadowhunter22.enchantmenttextstyling.EnchantmentTextStyling;
+import dev.shadowhunter22.enchantmenttextstyling.api.registry.ModRegistryKeys;
+import dev.shadowhunter22.enchantmenttextstyling.api.EnchantmentStyling;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricCodecDataProvider;
 import net.minecraft.enchantment.Enchantment;
@@ -21,8 +21,8 @@ import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import java.util.function.BiConsumer;
 
-public abstract class EnchantmentTextColorProvider extends FabricCodecDataProvider<List<EnchantmentStyling>> {
-    protected EnchantmentTextColorProvider(FabricDataOutput dataOutput, CompletableFuture<RegistryWrapper.WrapperLookup> registriesFuture) {
+public abstract class EnchantmentTextStylingProvider extends FabricCodecDataProvider<List<EnchantmentStyling>> {
+    protected EnchantmentTextStylingProvider(FabricDataOutput dataOutput, CompletableFuture<RegistryWrapper.WrapperLookup> registriesFuture) {
         super(dataOutput, registriesFuture, ModRegistryKeys.STYLING, EnchantmentStyling.CODEC.listOf());
     }
 
@@ -32,9 +32,9 @@ public abstract class EnchantmentTextColorProvider extends FabricCodecDataProvid
 
         HashMap<Identifier, List<EnchantmentStyling>> hashmap = new HashMap<>();
 
-        for (EnchantmentStyling enchantmentStyling : EnchantmentTextColorProviderBuilder.entries) {
+        for (EnchantmentStyling enchantmentStyling : EnchantmentTextStylingProviderBuilder.entries) {
             Identifier key = Identifier.of(
-                    EnchantmentTextColor.MOD_ID,
+                    EnchantmentTextStyling.MOD_ID,
                     enchantmentStyling.id().getNamespace() + "/" + enchantmentStyling.id().getPath()
             );
 
@@ -72,24 +72,24 @@ public abstract class EnchantmentTextColorProvider extends FabricCodecDataProvid
      * }
      * </pre>
      *
-     * @see EnchantmentTextColorProviderBuilder#color(int)
-     * @see EnchantmentTextColorProviderBuilder#specificCondition(int)
-     * @see EnchantmentTextColorProviderBuilder#min(int)
-     * @see EnchantmentTextColorProviderBuilder#max(int)
-     * @see EnchantmentTextColorProviderBuilder#add()
+     * @see EnchantmentTextStylingProviderBuilder#color(int)
+     * @see EnchantmentTextStylingProviderBuilder#specificCondition(int)
+     * @see EnchantmentTextStylingProviderBuilder#min(int)
+     * @see EnchantmentTextStylingProviderBuilder#max(int)
+     * @see EnchantmentTextStylingProviderBuilder#add()
      */
     public abstract void generate(RegistryWrapper.WrapperLookup lookup);
 
     /**
-     * Add an entry to {@link EnchantmentTextColorProvider} to generate a JSON file.  See {@link EnchantmentTextColorProvider#generate}
+     * Add an entry to {@link EnchantmentTextStylingProvider} to generate a JSON file.  See {@link EnchantmentTextStylingProvider#generate}
      * for implementation details.
      *
      * @param enchantment the RegistryKey of the enchantment to provide styling for
-     * @return {@link EnchantmentTextColorProviderBuilder} a builder to modify text color and set conditions for the enchantment.
-     * See {@link EnchantmentTextColorProvider#generate} for implementation details.
+     * @return {@link EnchantmentTextStylingProviderBuilder} a builder to modify text color and set conditions for the enchantment.
+     * See {@link EnchantmentTextStylingProvider#generate} for implementation details.
      */
-    public EnchantmentTextColorProviderBuilder addEntry(RegistryKey<Enchantment> enchantment) {
-        return new EnchantmentTextColorProviderBuilder(enchantment);
+    public EnchantmentTextStylingProviderBuilder addEntry(RegistryKey<Enchantment> enchantment) {
+        return new EnchantmentTextStylingProviderBuilder(enchantment);
     }
 
     @Override

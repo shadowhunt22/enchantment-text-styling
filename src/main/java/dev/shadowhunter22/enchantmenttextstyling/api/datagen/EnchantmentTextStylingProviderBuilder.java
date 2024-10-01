@@ -3,9 +3,9 @@
 // See LICENSE file in the project root for details.
 //
 
-package dev.shadowhunter22.enchantmenttextcolor.api.datagen;
+package dev.shadowhunter22.enchantmenttextstyling.api.datagen;
 
-import dev.shadowhunter22.enchantmenttextcolor.api.EnchantmentStyling;
+import dev.shadowhunter22.enchantmenttextstyling.api.EnchantmentStyling;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.registry.BuiltinRegistries;
 import net.minecraft.registry.RegistryKey;
@@ -17,11 +17,11 @@ import net.minecraft.util.Formatting;
 import java.util.ArrayList;
 import java.util.Optional;
 
-public class EnchantmentTextColorProviderBuilder {
+public class EnchantmentTextStylingProviderBuilder {
     protected static final ArrayList<EnchantmentStyling> entries = new ArrayList<>();
     private final EnchantmentStyling.Builder entry;
 
-    protected EnchantmentTextColorProviderBuilder(RegistryKey<Enchantment> entry) {
+    protected EnchantmentTextStylingProviderBuilder(RegistryKey<Enchantment> entry) {
         // the following will only work for vanilla enchantments
         Optional<RegistryEntry.Reference<Enchantment>> enchantment = BuiltinRegistries.createWrapperLookup().getWrapperOrThrow(RegistryKeys.ENCHANTMENT).getOptional(entry);
 
@@ -46,7 +46,7 @@ public class EnchantmentTextColorProviderBuilder {
      *
      * @see EnchantmentStyling.Builder#color(int)
      */
-    public EnchantmentTextColorProviderBuilder color(int value) {
+    public EnchantmentTextStylingProviderBuilder color(int value) {
         this.entry.color(value);
         return this;
     }
@@ -58,7 +58,7 @@ public class EnchantmentTextColorProviderBuilder {
      *
      * @see EnchantmentStyling.Builder#value(int)
      */
-    public EnchantmentTextColorProviderBuilder specificCondition(int value) {
+    public EnchantmentTextStylingProviderBuilder specificCondition(int value) {
         this.entry.value(value);
         return this;
     }
@@ -68,7 +68,7 @@ public class EnchantmentTextColorProviderBuilder {
      * it will evaluate as follows:
      *
      * <pre>{@code if (level >= 1) {
-     *      // apply text color
+     *      // apply text styling
      * }}</pre>
      *
      * <br>
@@ -77,12 +77,12 @@ public class EnchantmentTextColorProviderBuilder {
      * evaluate as follows:
      *
      * <pre>{@code if (level >= 1 && level <= 2) {
-     *     // apply text color
+     *     // apply text styling
      * }}</pre>
      *
      * @see EnchantmentStyling.Builder#min(int)
      */
-    public EnchantmentTextColorProviderBuilder min(int value) {
+    public EnchantmentTextStylingProviderBuilder min(int value) {
         this.entry.min(value);
         return this;
     }
@@ -92,7 +92,7 @@ public class EnchantmentTextColorProviderBuilder {
      * it will evaluate as follows:
      *
      * <pre>{@code if (level <= 2) {
-     *      // apply text color
+     *      // apply text styling
      * }}</pre>
      *
      * <br>
@@ -101,18 +101,18 @@ public class EnchantmentTextColorProviderBuilder {
      * evaluate as follows:
      *
      * <pre>{@code if (level >= 1 && level <= 2) {
-     *     // apply text color
+     *     // apply text styling
      * }}</pre>
      *
      * @see EnchantmentStyling.Builder#max(int)
      */
-    public EnchantmentTextColorProviderBuilder max(int value) {
+    public EnchantmentTextStylingProviderBuilder max(int value) {
         this.entry.max(value);
         return this;
     }
 
     /**
-     * Build and add {@link EnchantmentTextColorProviderBuilder#entry} to {@link EnchantmentTextColorProviderBuilder#entries}.
+     * Build and add {@link EnchantmentTextStylingProviderBuilder#entry} to {@link EnchantmentTextStylingProviderBuilder#entries}.
      * Required in order to generate the JSON file.
      */
     public void add() {

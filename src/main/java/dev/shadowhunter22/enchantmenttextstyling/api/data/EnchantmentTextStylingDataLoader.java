@@ -3,13 +3,13 @@
 // See LICENSE file in the project root for details.
 //
 
-package dev.shadowhunter22.enchantmenttextcolor.api.data;
+package dev.shadowhunter22.enchantmenttextstyling.api.data;
 
 import com.google.gson.JsonArray;
 import com.mojang.serialization.DataResult;
 import com.mojang.serialization.JsonOps;
-import dev.shadowhunter22.enchantmenttextcolor.EnchantmentTextColor;
-import dev.shadowhunter22.enchantmenttextcolor.api.EnchantmentStyling;
+import dev.shadowhunter22.enchantmenttextstyling.EnchantmentTextStyling;
+import dev.shadowhunter22.enchantmenttextstyling.api.EnchantmentStyling;
 import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
 import net.fabricmc.fabric.api.resource.SimpleSynchronousResourceReloadListener;
 import net.minecraft.resource.Resource;
@@ -28,11 +28,11 @@ import java.util.List;
 import java.util.Map;
 
 @ApiStatus.Internal
-public class EnchantmentTextDataLoader implements SimpleSynchronousResourceReloadListener {
+public class EnchantmentTextStylingDataLoader implements SimpleSynchronousResourceReloadListener {
     private static final HashMap<Identifier, List<EnchantmentStyling>> entries = new HashMap<>();
 
     public static void listener() {
-        ResourceManagerHelper.get(ResourceType.SERVER_DATA).registerReloadListener(new EnchantmentTextDataLoader());
+        ResourceManagerHelper.get(ResourceType.SERVER_DATA).registerReloadListener(new EnchantmentTextStylingDataLoader());
     }
 
     public static HashMap<Identifier, List<EnchantmentStyling>> getEntries() {
@@ -44,7 +44,7 @@ public class EnchantmentTextDataLoader implements SimpleSynchronousResourceReloa
         entries.clear();
 
         for (Map.Entry<Identifier, Resource> entry : manager.findResources(this.getFabricId().getPath(), path -> path.getPath().endsWith(".json")).entrySet()) {
-            if (entry.getKey().getNamespace().equals(EnchantmentTextColor.MOD_ID)) {
+            if (entry.getKey().getNamespace().equals(EnchantmentTextStyling.MOD_ID)) {
                 try (InputStream stream = entry.getValue().getInputStream()) {
                     JsonArray jsonArray = JsonHelper.deserializeArray(new InputStreamReader(stream));
 
@@ -63,6 +63,6 @@ public class EnchantmentTextDataLoader implements SimpleSynchronousResourceReloa
 
     @Override
     public Identifier getFabricId() {
-        return Identifier.of(EnchantmentTextColor.MOD_ID, "styling");
+        return Identifier.of(EnchantmentTextStyling.MOD_ID, "styling");
     }
 }

@@ -2,8 +2,8 @@
 	"schemaVersion": 1,
 	"id": "enchantment-text-color",
 	"version": "${version}",
-	"name": "Enchantment Text Color",
-	"description": "Data-driven ability to add colors to enchantment names!",
+	"name": "Enchantment Text Styling",
+	"description": "Data-driven ability to add style the text of enchantment names!",
 	"authors": [
 		"ShadowHunter22"
 	],
@@ -16,10 +16,10 @@
 	"environment": "*",
 	"entrypoints": {
 		"main": [
-			"dev.shadowhunter22.enchantmenttextcolor.EnchantmentTextColor"
+			"dev.shadowhunter22.enchantmenttextstyling.EnchantmentTextStyling"
 		],
 		"client": [
-			"dev.shadowhunter22.enchantmenttextcolor.EnchantmentTextColorClient"
+			"dev.shadowhunter22.enchantmenttextstyling.EnchantmentTextStylingClient"
 		]
 	},
 	"mixins": [
