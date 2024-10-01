@@ -25,7 +25,7 @@ loom {
 	splitEnvironmentSourceSets()
 
 	mods {
-		"enchantment-text-color" {
+		"colored-enchantments" {
 			sourceSet sourceSets.main
 			sourceSet sourceSets.client
 		}

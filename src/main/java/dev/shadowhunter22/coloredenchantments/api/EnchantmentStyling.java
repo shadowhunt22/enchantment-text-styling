@@ -3,7 +3,7 @@
 // See LICENSE file in the project root for details.
 //
 
-package dev.shadowhunter22.enchantmenttextcolor.api;
+package dev.shadowhunter22.coloredenchantments.api;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
@@ -18,11 +18,7 @@ import java.util.Optional;
 
 @SuppressWarnings("OptionalUsedAsFieldOrParameterType")
 public class EnchantmentStyling {
-    public static final Codec<EnchantmentStyling> CODEC = RecordCodecBuilder.create(builder -> builder.group(
-            Identifier.CODEC.fieldOf("enchantment").forGetter(EnchantmentStyling::getEnchantmentId),
-            Codec.INT.fieldOf("color").forGetter(EnchantmentStyling::getColor),
-            EnchantmentStylingCondition.CODEC.optionalFieldOf("conditions").forGetter(EnchantmentStyling::getEnchantmentStylingCondition)
-        ).apply(builder, EnchantmentStyling::new));
+    RegistryKey<Enchantment> enchantmentKey;
 
     private final Identifier enchantmentId;
     private int color;
@@ -36,9 +32,13 @@ public class EnchantmentStyling {
 
     public EnchantmentStyling(RegistryKey<Enchantment> enchantmentKey) {
         Enchantment enchantment = BuiltinRegistries.createWrapperLookup().createRegistryLookup().getOrThrow(enchantmentKey.getRegistryRef()).getOrThrow(enchantmentKey).value();
+
+        this.enchantmentKey = enchantmentKey;
         this.enchantmentId = enchantmentKey.getValue();
+
         TextColor color = enchantment.description().getStyle().getColor();
         this.color = color == null ? Formatting.GRAY.getColorValue() : color.getRgb();
+
         this.enchantmentStylingCondition = Optional.of(new EnchantmentStylingCondition());
     }
 
@@ -81,6 +81,14 @@ public class EnchantmentStyling {
         this.enchantmentStylingCondition.ifPresent(condition -> condition.max = Optional.of(value));
     }
 
+    public static Codec<EnchantmentStyling> getCodec() {
+        return RecordCodecBuilder.create(builder -> builder.group(
+            Identifier.CODEC.fieldOf("enchantment").forGetter(EnchantmentStyling::getEnchantmentId),
+            Codec.INT.fieldOf("color").forGetter(EnchantmentStyling::getColor),
+            EnchantmentStylingCondition.CODEC.optionalFieldOf("conditions").forGetter(EnchantmentStyling::getEnchantmentStylingCondition)
+        ).apply(builder, EnchantmentStyling::new));
+    }
+
     public Identifier getEnchantmentId() {
         return this.enchantmentId;
     }
@@ -94,19 +102,21 @@ public class EnchantmentStyling {
     }
 
     public static class EnchantmentStylingCondition {
+        Optional<Integer> value = Optional.empty();
+        Optional<Integer> min = Optional.empty();
+        Optional<Integer> max = Optional.empty();
+
+        private EnchantmentStylingCondition(Optional<Integer> value, Optional<Integer> min, Optional<Integer> max) {
+        }
+
+        public EnchantmentStylingCondition() {
+        }
+
         public static final Codec<EnchantmentStylingCondition> CODEC = RecordCodecBuilder.create(instance -> instance.group(
                 Codec.INT.optionalFieldOf("value").forGetter(EnchantmentStylingCondition::getValue),
                 Codec.INT.optionalFieldOf("min").forGetter(EnchantmentStylingCondition::getMin),
                 Codec.INT.optionalFieldOf("max").forGetter(EnchantmentStylingCondition::getMax)
         ).apply(instance, EnchantmentStylingCondition::new));
-
-        Optional<Integer> value = Optional.empty();
-        Optional<Integer> min = Optional.empty();
-        Optional<Integer> max = Optional.empty();
-
-        private EnchantmentStylingCondition(Optional<Integer> value, Optional<Integer> min, Optional<Integer> max) {}
-
-        public EnchantmentStylingCondition() {}
 
         public Optional<Integer> getValue() {
             return this.value;

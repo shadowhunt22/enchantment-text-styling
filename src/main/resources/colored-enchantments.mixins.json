@@ -1,6 +1,6 @@
 {
   "required": true,
-  "package": "dev.shadowhunter22.enchantmenttextcolor.mixin",
+  "package": "dev.shadowhunter22.coloredenchantments.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
     "MixinEnchantment"
