@@ -6,39 +6,43 @@
 package dev.shadowhunter22.enchantmenttextstyling.api.datagen;
 
 import dev.shadowhunter22.enchantmenttextstyling.EnchantmentTextStyling;
-import dev.shadowhunter22.enchantmenttextstyling.api.registry.ModRegistryKeys;
+import dev.shadowhunter22.enchantmenttextstyling.registry.ModRegistryKeys;
 import dev.shadowhunter22.enchantmenttextstyling.api.EnchantmentStyling;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricCodecDataProvider;
+import net.minecraft.data.DataOutput;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.util.Identifier;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import java.util.function.BiConsumer;
 
-public abstract class EnchantmentTextStylingProvider extends FabricCodecDataProvider<List<EnchantmentStyling>> {
+public abstract class EnchantmentTextStylingProvider extends FabricCodecDataProvider<EnchantmentStyling> {
     protected EnchantmentTextStylingProvider(FabricDataOutput dataOutput, CompletableFuture<RegistryWrapper.WrapperLookup> registriesFuture) {
-        super(dataOutput, registriesFuture, ModRegistryKeys.STYLING, EnchantmentStyling.CODEC.listOf());
+        super(dataOutput, registriesFuture, DataOutput.OutputType.DATA_PACK, ModRegistryKeys.STYLING.getValue().toString().replace(":","/"), EnchantmentStyling.CODEC);
     }
 
     @Override
-    protected void configure(BiConsumer<Identifier, List<EnchantmentStyling>> provider, RegistryWrapper.WrapperLookup lookup) {
+    protected void configure(BiConsumer<Identifier, EnchantmentStyling> provider, RegistryWrapper.WrapperLookup lookup) {
         this.generate(lookup);
 
-        HashMap<Identifier, List<EnchantmentStyling>> hashmap = new HashMap<>();
+        HashMap<Identifier, EnchantmentStyling> hashmap = new HashMap<>();
 
         for (EnchantmentStyling enchantmentStyling : EnchantmentTextStylingProviderBuilder.entries) {
             Identifier key = Identifier.of(
                     EnchantmentTextStyling.MOD_ID,
-                    enchantmentStyling.id().getNamespace() + "/" + enchantmentStyling.id().getPath()
+                    enchantmentStyling.id().getPath()
             );
 
-            hashmap.computeIfAbsent(key, k -> new ArrayList<>()).add(enchantmentStyling);
+            hashmap.computeIfPresent(key, (id, styling) -> {
+                styling.styles().add(enchantmentStyling.styles().getFirst());
+                return styling;
+            });
+
+            hashmap.putIfAbsent(key, enchantmentStyling);
         }
 
         hashmap.forEach(provider);

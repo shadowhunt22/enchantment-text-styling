@@ -7,35 +7,17 @@ package dev.shadowhunter22.enchantmenttextstyling.api.datagen;
 
 import dev.shadowhunter22.enchantmenttextstyling.api.EnchantmentStyling;
 import net.minecraft.enchantment.Enchantment;
-import net.minecraft.registry.BuiltinRegistries;
 import net.minecraft.registry.RegistryKey;
-import net.minecraft.registry.RegistryKeys;
-import net.minecraft.registry.entry.RegistryEntry;
-import net.minecraft.text.TextColor;
 import net.minecraft.util.Formatting;
 
 import java.util.ArrayList;
-import java.util.Optional;
 
 public class EnchantmentTextStylingProviderBuilder {
     protected static final ArrayList<EnchantmentStyling> entries = new ArrayList<>();
     private final EnchantmentStyling.Builder entry;
 
     protected EnchantmentTextStylingProviderBuilder(RegistryKey<Enchantment> entry) {
-        // the following will only work for vanilla enchantments
-        Optional<RegistryEntry.Reference<Enchantment>> enchantment = BuiltinRegistries.createWrapperLookup().getWrapperOrThrow(RegistryKeys.ENCHANTMENT).getOptional(entry);
-
-        int color;
-
-        if (enchantment.isPresent()) {
-            TextColor textColor = enchantment.get().value().description().getStyle().getColor();
-            color = textColor == null ? Formatting.GRAY.getColorValue() : textColor.getRgb();
-        } else {
-            color = Formatting.GRAY.getColorValue();
-        }
-
         this.entry = EnchantmentStyling.builder(entry);
-        this.entry.color(color);
     }
 
     /**
