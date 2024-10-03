@@ -1,0 +1,15 @@
+{
+  "enchantment": "minecraft:blast_protection",
+  "styles": [
+    {
+      "bold": true,
+      "color": 5635925,
+      "condition": {
+        "max": 3,
+        "min": 2
+      },
+      "obfuscated": true,
+      "underlined": true
+    }
+  ]
+}

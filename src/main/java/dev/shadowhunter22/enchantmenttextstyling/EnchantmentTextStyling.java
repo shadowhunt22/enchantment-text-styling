@@ -5,7 +5,7 @@
 
 package dev.shadowhunter22.enchantmenttextstyling;
 
-import dev.shadowhunter22.enchantmenttextstyling.api.data.EnchantmentTextStylingDataLoader;
+import dev.shadowhunter22.enchantmenttextstyling.api.registry.ModRegistryKeys;
 import net.fabricmc.api.ModInitializer;
 
 import org.slf4j.Logger;
@@ -17,7 +17,7 @@ public class EnchantmentTextStyling implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
-		EnchantmentTextStylingDataLoader.listener();
+		ModRegistryKeys.init();
 
 		LOGGER.info("Successfully loaded {} mod!", MOD_ID);
 	}

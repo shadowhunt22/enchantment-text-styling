@@ -1,0 +1,29 @@
+{
+  "enchantment": "minecraft:protection",
+  "styles": [
+    {
+      "color": 16733525,
+      "condition": {
+        "value": 1
+      }
+    },
+    {
+      "color": 16755200,
+      "condition": {
+        "value": 2
+      }
+    },
+    {
+      "color": 16777045,
+      "condition": {
+        "value": 3
+      }
+    },
+    {
+      "color": 5635925,
+      "condition": {
+        "value": 4
+      }
+    }
+  ]
+}

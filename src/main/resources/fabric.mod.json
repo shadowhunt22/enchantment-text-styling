@@ -3,7 +3,7 @@
 	"id": "enchantment-text-color",
 	"version": "${version}",
 	"name": "Enchantment Text Styling",
-	"description": "Data-driven ability to add style the text of enchantment names!",
+	"description": "Data-driven ability to add style to the text of enchantment names!",
 	"authors": [
 		"ShadowHunter22"
 	],
@@ -12,7 +12,7 @@
 		"sources": "https://github.com/shadowhunt22/enchantment-text-color"
 	},
 	"license": "ARR",
-	"icon": "assets/enchantment-text-color/icon.png",
+	"icon": "assets/enchantment-text-styling/icon.png",
 	"environment": "*",
 	"entrypoints": {
 		"main": [
@@ -33,13 +33,5 @@
 	},
 	"suggests": {
 		"another-mod": "*"
-	},
-	"custom": {
-		"modmenu": {
-			"badges": [
-				"library"
-			],
-			"update_checker": false
-		}
 	}
 }
