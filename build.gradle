@@ -96,7 +96,8 @@ jar {
 // checkstyle
 
 tasks.register('checkstyle', Checkstyle) {
-	configFile rootProject.file('checkstyle.xml')
+	configFile = rootProject.file("checkstyle.xml")
+	toolVersion = "10.12.1"
 
 	// fail early
 	ignoreFailures false
