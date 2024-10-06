@@ -3,8 +3,8 @@
   "id": "enchantment-text-color-testmod",
   "version": "1.0.0",
   "entrypoints": {
-    "fabric-datagen": [
-      "dev.shadowhunter22.enchantmenttextstyling.test.EnchantmentTextStylingTestmodDataGen"
-    ]
+	"fabric-datagen": [
+	  "dev.shadowhunter22.enchantmenttextstyling.test.EnchantmentTextStylingTestmodDataGen"
+	]
   }
 }

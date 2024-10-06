@@ -3,8 +3,8 @@
   "id": "enchantment-text-color-testmod-client",
   "version": "1.0.0",
   "entrypoints": {
-    "client": [
-      "dev.shadowhunter22.enchantmenttextstyling.test.EnchantmentTextStylingTestmodClient"
-    ]
+	"client": [
+	  "dev.shadowhunter22.enchantmenttextstyling.test.EnchantmentTextStylingTestmodClient"
+	]
   }
 }

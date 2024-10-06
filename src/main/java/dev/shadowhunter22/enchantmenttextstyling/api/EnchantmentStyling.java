@@ -9,9 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.registry.BuiltinRegistries;
 import net.minecraft.registry.RegistryKey;
@@ -21,6 +18,9 @@ import net.minecraft.text.Style;
 import net.minecraft.text.TextColor;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.Identifier;
+
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
 public record EnchantmentStyling(Identifier id, List<EnchantmentTextStyles> styles) {
 	public static final Codec<EnchantmentStyling> CODEC = RecordCodecBuilder.create(builder -> builder.group(

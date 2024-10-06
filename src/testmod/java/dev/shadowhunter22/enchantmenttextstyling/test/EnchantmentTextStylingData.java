@@ -10,6 +10,7 @@ import java.util.concurrent.CompletableFuture;
 import dev.shadowhunter22.enchantmenttextstyling.api.datagen.EnchantmentTextStylingProvider;
 
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
+
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.util.Formatting;

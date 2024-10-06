@@ -1,13 +1,13 @@
 {
   "enchantment": "minecraft:projectile_protection",
   "styles": [
-    {
-      "color": 16733525,
-      "condition": {
-        "max": 2,
-        "min": 1
-      },
-      "italic": true
-    }
+	{
+	  "color": 16733525,
+	  "condition": {
+		"max": 2,
+		"min": 1
+	  },
+	  "italic": true
+	}
   ]
 }

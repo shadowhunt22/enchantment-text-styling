@@ -74,7 +74,7 @@
 		<module name="UnusedImports"/>
 
 		<module name="ImportOrder">
-			<property name="groups" value="java,javax,*,dev.shadowhunter22,net.fabricmc,net.minecraft,com.mojang"/>
+			<property name="groups" value="java,javax,*,dev.shadowhunter22,net.fabricmc,net.minecraft,com.mojang,org"/>
 			<property name="ordered" value="true"/>
 			<property name="separated" value="true"/>
 			<property name="option" value="top"/>

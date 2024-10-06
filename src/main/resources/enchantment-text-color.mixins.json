@@ -3,10 +3,10 @@
   "package": "dev.shadowhunter22.enchantmenttextstyling.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
-    "enchantment.MixinEnchantment",
-    "world.MixinWorld"
+	"enchantment.MixinEnchantment",
+	"world.MixinWorld"
   ],
   "injectors": {
-    "defaultRequire": 1
+	"defaultRequire": 1
   }
 }
