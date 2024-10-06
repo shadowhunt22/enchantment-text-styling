@@ -1,37 +1,35 @@
 {
-	"schemaVersion": 1,
-	"id": "enchantment-text-color",
-	"version": "${version}",
-	"name": "Enchantment Text Styling",
-	"description": "Data-driven ability to add style to the text of enchantment names!",
-	"authors": [
-		"ShadowHunter22"
-	],
-	"contact": {
-		"homepage": "https://shadowhunt22.github.io/mod-wiki/",
-		"sources": "https://github.com/shadowhunt22/enchantment-text-color"
-	},
-	"license": "ARR",
-	"icon": "assets/enchantment-text-styling/icon.png",
-	"environment": "*",
-	"entrypoints": {
-		"main": [
-			"dev.shadowhunter22.enchantmenttextstyling.EnchantmentTextStyling"
-		],
-		"client": [
-			"dev.shadowhunter22.enchantmenttextstyling.EnchantmentTextStylingClient"
-		]
-	},
-	"mixins": [
-		"enchantment-text-color.mixins.json"
-	],
-	"depends": {
-		"fabricloader": ">=0.16.5",
-		"minecraft": "~1.21",
-		"java": ">=21",
-		"fabric-api": "*"
-	},
-	"suggests": {
-		"another-mod": "*"
-	}
+  "schemaVersion": 1,
+  "id": "enchantment-text-styling",
+  "version": "${version}",
+  "name": "Enchantment Text Styling",
+  "description": "Data-driven ability to add style to the text of enchantment names!",
+  "authors": [
+    "ShadowHunter22"
+  ],
+  "contact": {
+    "homepage": "https://shadowhunt22.github.io/mod-wiki/",
+	"issues": "https://github.com/shadowhunt22/enchantment-text-styling/issues",
+    "sources": "https://github.com/shadowhunt22/enchantment-text-styling"
+  },
+  "license": "ARR",
+  "icon": "assets/enchantment-text-styling/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "dev.shadowhunter22.enchantmenttextstyling.EnchantmentTextStyling"
+    ],
+    "client": [
+      "dev.shadowhunter22.enchantmenttextstyling.EnchantmentTextStylingClient"
+    ]
+  },
+  "mixins": [
+    "enchantment-text-color.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.16.5",
+    "minecraft": "~1.21",
+    "java": ">=21",
+    "fabric-api": "*"
+  }
 }
