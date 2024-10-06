@@ -8,11 +8,11 @@ There are two parts to how this works: datapacks and applying the data through t
 
 #### Datapacks
 
-This mod defines a registry in `data/enchantment-text-styling/styling/enchantment`.  This is the home directory to all of the JSON files containing styling information for enchantments.
+This mod defines a registry in `data/enchantment-text-styling/styling/enchantment`.  This is the home directory to all the JSON files containing styling information for enchantments.
 
 #### Mod
 
-When the server (integrated or dedicated) loads, it will grab the registry manager from the world so it can read and apply styling values from the datapacks which are loaded in the "dynamic" registry.  All that this mod does for the player is change the text stlying of the enchantment.
+When the server (integrated or dedicated) loads, it will grab the registry manager from the world so it can read and apply styling values from the datapacks which are loaded in the "dynamic" registry.  All that this mod does for the player is change the text styling of the enchantment.
 
 ### Features
 
@@ -37,4 +37,4 @@ This mod is fully server-sided.  If this mod is not on the server, the datapacks
 
 ### Modpack Creators and Mod Developers
 
-Want to add your enchantments or change the style of exisiting enchantments?  Head on over to the [wiki](https://shadowhunt22.github.io/mod-wiki/apis/enchantment-text-styling/)!
+Want to add your enchantments or change the style of existing enchantments?  Head on over to the [wiki](https://shadowhunt22.github.io/mod-wiki/apis/enchantment-text-styling/)!

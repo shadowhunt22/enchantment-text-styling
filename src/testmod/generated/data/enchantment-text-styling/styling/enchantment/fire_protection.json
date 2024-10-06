@@ -1,13 +1,13 @@
 {
   "enchantment": "minecraft:fire_protection",
   "styles": [
-    {
-      "color": 5635925,
-      "condition": {
-        "max": 4,
-        "min": 3
-      },
-      "strikethrough": true
-    }
+	{
+	  "color": 5635925,
+	  "condition": {
+		"max": 4,
+		"min": 3
+	  },
+	  "strikethrough": true
+	}
   ]
 }

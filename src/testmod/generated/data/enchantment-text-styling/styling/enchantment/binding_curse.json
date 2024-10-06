@@ -1,8 +1,8 @@
 {
   "enchantment": "minecraft:binding_curse",
   "styles": [
-    {
-      "color": 11184810
-    }
+	{
+	  "color": 11184810
+	}
   ]
 }
