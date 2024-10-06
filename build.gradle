@@ -95,20 +95,19 @@ jar {
 
 // checkstyle
 
-tasks.register('checkstyle', Checkstyle) {
+checkstyle {
 	configFile = rootProject.file("checkstyle.xml")
 	toolVersion = "10.12.1"
+}
+
+tasks.register('checkstyleAll', Checkstyle) {
+	configFile = rootProject.file("checkstyle.xml")
 
 	// fail early
 	ignoreFailures false
 	showViolations true
 
-	source 'src/main'
-	source 'src/client'
-
-	exclude 'src/test'
-	exclude 'src/testmod'
-	exclude 'src/testmodClient'
+	source 'src'
 
 	classpath = files()
 }
