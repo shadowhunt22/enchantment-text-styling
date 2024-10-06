@@ -107,7 +107,7 @@ tasks.register('checkstyle', Checkstyle) {
 
 	exclude 'src/test'
 	exclude 'src/testmod'
-	exclude 'testmodClient'
+	exclude 'src/testmodClient'
 
 	classpath = files()
 }
