@@ -6,11 +6,6 @@ plugins {
 	id 'checkstyle'
 }
 
-checkstyle {
-	configFile = rootProject.file("checkstyle.xml")
-	toolVersion = "10.12.1"
-}
-
 version = project.mod_version
 group = project.maven_group
 
@@ -96,6 +91,25 @@ jar {
 	from("LICENSE") {
 		rename { "${it}_${project.base.archivesName.get()}"}
 	}
+}
+
+// checkstyle
+
+tasks.register('checkstyle', Checkstyle) {
+	configFile rootProject.file('checkstyle.xml')
+
+	// fail early
+	ignoreFailures false
+	showViolations true
+
+	source 'src/main'
+	source 'src/client'
+
+	exclude 'src/test'
+	exclude 'src/testmod'
+	exclude 'testmodClient'
+
+	classpath = files()
 }
 
 // publishing

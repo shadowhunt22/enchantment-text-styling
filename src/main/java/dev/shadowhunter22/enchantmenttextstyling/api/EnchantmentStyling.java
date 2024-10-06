@@ -124,9 +124,7 @@ public record EnchantmentStyling(Identifier id, List<EnchantmentTextStyles> styl
 		}
 	}
 
-	public record EnchantmentTextStyles(EnchantmentStylingCondition condition, int color, Optional<Boolean> bold,
-										Optional<Boolean> italic, Optional<Boolean> underlined,
-										Optional<Boolean> strikethrough, Optional<Boolean> obfuscated) {
+	public record EnchantmentTextStyles(EnchantmentStylingCondition condition, int color, Optional<Boolean> bold, Optional<Boolean> italic, Optional<Boolean> underlined, Optional<Boolean> strikethrough, Optional<Boolean> obfuscated) {
 		public static final Codec<EnchantmentTextStyles> CODEC = RecordCodecBuilder.create(builder -> builder.group(
 				EnchantmentStylingCondition.CODEC.optionalFieldOf("condition", EnchantmentStylingCondition.EMPTY).forGetter(EnchantmentTextStyles::condition),
 				Codec.INT.fieldOf("color").forGetter(EnchantmentTextStyles::color),
@@ -137,6 +135,18 @@ public record EnchantmentStyling(Identifier id, List<EnchantmentTextStyles> styl
 				Codec.BOOL.optionalFieldOf("obfuscated").forGetter(EnchantmentTextStyles::obfuscated)
 		).apply(builder, EnchantmentTextStyles::new));
 
+		/**
+		 * Get the styling that is associated with the enchantment {@link EnchantmentStyling#id}.  It is safe to assume
+		 * that the following methods will return {@code true} or {@code false}:
+		 *
+		 * <li> {@link Style#withBold(Boolean)}
+		 * <li> {@link Style#withItalic(Boolean)}
+		 * <li> {@link Style#withUnderline(Boolean)}
+		 * <li> {@link Style#withStrikethrough(Boolean)}
+		 * <li> {@link Style#withObfuscated(Boolean)}
+		 *
+		 * @return {@link Style}
+		 */
 		public Style getStyling() {
 			Style style = Style.EMPTY;
 
