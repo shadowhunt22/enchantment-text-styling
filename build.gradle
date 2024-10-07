@@ -119,12 +119,20 @@ def minecraft_versions = [
 		"1.21.1"
 ]
 
+static def forVersion(String first, String last) {
+	if (first == last) {
+		return first
+	} else {
+		return "${first}-${last}"
+	}
+}
+
 modrinth {
 	token = System.getenv("MODRINTH_TOKEN")
 	projectId = "8lNgRGJD"
 
 	versionNumber = "${project.mod_version}"
-	versionName = "${project.mod_version} for ${minecraft_versions.first()}-${minecraft_versions.last()}"
+	versionName = "${project.mod_version} for ${forVersion(minecraft_versions.first(), minecraft_versions.last())}"
 	versionType = "alpha"
 
 	uploadFile = remapJar
@@ -142,16 +150,3 @@ modrinth {
 }
 
 tasks.modrinth.dependsOn(tasks.modrinthSyncBody)
-
-afterEvaluate {
-	publishing {
-		publications {
-			maven(MavenPublication) {
-				from components.java
-				groupId = maven_group
-				artifactId = archives_base_name
-				version = '1.20.x-0.1.0'
-			}
-		}
-	}
-}
