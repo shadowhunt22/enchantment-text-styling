@@ -53,7 +53,7 @@ public record EnchantmentStyling(Identifier id, List<EnchantmentTextStyles> styl
 			// colors replaced if a developer adds an entry but forgets to method chain .color() when extending EnchantmentTextColorProvider.
 			//
 			// this also ensures no null values will be passed to EnchantmentStyling.EnchantmentTextStyles
-			Optional<RegistryEntry.Reference<Enchantment>> enchantment = BuiltinRegistries.createWrapperLookup().getWrapperOrThrow(RegistryKeys.ENCHANTMENT).getOptional(entry);
+			Optional<RegistryEntry.Reference<Enchantment>> enchantment = BuiltinRegistries.createWrapperLookup().getOrThrow(RegistryKeys.ENCHANTMENT).getOptional(entry);
 
 			if (enchantment.isPresent()) { // will not be present for modded enchantments
 				TextColor textColor = enchantment.get().value().description().getStyle().getColor();
