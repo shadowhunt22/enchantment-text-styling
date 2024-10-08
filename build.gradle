@@ -119,12 +119,20 @@ def minecraft_versions = [
 		"1.21.1"
 ]
 
+static def forVersion(String first, String last) {
+	if (first == last) {
+		return first
+	} else {
+		return "${first}-${last}"
+	}
+}
+
 modrinth {
 	token = System.getenv("MODRINTH_TOKEN")
 	projectId = "8lNgRGJD"
 
 	versionNumber = "${project.mod_version}"
-	versionName = "${project.mod_version} for ${minecraft_versions.first()}-${minecraft_versions.last()}"
+	versionName = "${project.mod_version} for ${forVersion(minecraft_versions.first(), minecraft_versions.last())}"
 	versionType = "alpha"
 
 	uploadFile = remapJar
