@@ -6,7 +6,6 @@
 package dev.shadowhunter22.enchantmenttextstyling.mixin.world;
 
 import java.util.Optional;
-import java.util.function.Supplier;
 
 import dev.shadowhunter22.enchantmenttextstyling.registry.ModRegistryKeys;
 
@@ -24,7 +23,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(World.class)
 public abstract class MixinWorld {
 	@Inject(method = "<init>", at = @At("TAIL"))
-	protected void getAndSetRegistryManager(MutableWorldProperties properties, RegistryKey registryRef, DynamicRegistryManager registryManager, RegistryEntry dimensionEntry, Supplier profiler, boolean isClient, boolean debugWorld, long biomeAccess, int maxChainedNeighborUpdates, CallbackInfo ci) {
+	protected void getAndSetRegistryManager(MutableWorldProperties properties, RegistryKey registryRef, DynamicRegistryManager registryManager, RegistryEntry dimensionEntry, boolean isClient, boolean debugWorld, long seed, int maxChainedNeighborUpdates, CallbackInfo ci) {
 		ModRegistryKeys.Manager.registryManager = Optional.of(registryManager);
 	}
 }
