@@ -12,7 +12,7 @@ This mod defines a registry in `data/enchantment-text-styling/styling/enchantmen
 
 #### Mod
 
-When the server (integrated or dedicated) loads, it will grab the registry manager from the world so it can read and apply styling values from the datapacks which are loaded in the "dynamic" registry.  All that this mod does for the player is change the text styling of the enchantment.
+When the server (integrated or dedicated) loads, it will grab the registry manager from the world so it can read and apply styling values from the datapacks which are loaded in the dynamic registry.  All that this mod does for the player is change the text styling of the enchantment.
 
 ### Features
 
@@ -33,7 +33,7 @@ This mod is available for the following Minecraft versions:
 
 ### Client and Server Support
 
-This mod is fully server-sided.  If this mod is not on the server, the datapacks are sitting there with none of their data being used!
+This mod is required to be on the client and server.  If this mod is not on the client or server, the datapacks are sitting there with none of their data being used!
 
 ### Modpack Creators and Mod Developers
 
